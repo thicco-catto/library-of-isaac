@@ -1,5 +1,5 @@
 local LOCAL_TSIL = {}
-local LOCAL_TSIL_VERSION = 0.3211
+local LOCAL_TSIL_VERSION = 0.3212
 
 --- Initializes the TSIL library
 ---@param FolderName string
@@ -73,29 +73,34 @@ function LOCAL_TSIL.Init(FolderName)
 	TSIL.__LOCAL_FOLDER = FolderName
 	rawget(TSIL, "__PROXY").__LOCAL_FOLDER = FolderName
 
-	--- @class InternalTSILCallback
-	--- @field Id string
-	--- @field Version number
-	--- @field Callback ModCallbacks | CustomCallback
-	--- @field Funct function
-	--- @field Priority integer | CallbackPriority
-	--- @field OptionalParam integer | integer[]?
-	--- @field Enabled boolean
 	if not rawget(TSIL, "__PROXY").__INTERNAL_CALLBACKS then
+		--- @class InternalTSILCallback
+		--- @field Id string
+		--- @field Version number
+		--- @field Callback ModCallbacks | CustomCallback
+		--- @field Funct function
+		--- @field Priority integer | CallbackPriority
+		--- @field OptionalParam integer | integer[]?
+		--- @field Enabled boolean
+
 		--- @type InternalTSILCallback[]
 		TSIL.__INTERNAL_CALLBACKS = {}
 	end
 
 	if not rawget(TSIL, "__PROXY").__VERSION_PERSISTENT_DATA then
 		TSIL.__VERSION_PERSISTENT_DATA = {}
+	end
 
+	if not rawget(TSIL, "__PROXY").__VERSION_PERSISTENT_DATA.RegisteredCustomCallbacks then
 		---@class RegisteredCustomCallback
 		---@field Version number
 		---@field Trigger function
 
 		---@type table<CustomCallback, RegisteredCustomCallback>
 		TSIL.__VERSION_PERSISTENT_DATA.RegisteredCustomCallbacks = {}
+	end
 
+	if not rawget(TSIL, "__PROXY").__VERSION_PERSISTENT_DATA.PersistentData then
 		--- @class PersistentVariable
 		--- @field value any
 		--- @field default any
@@ -110,9 +115,26 @@ function LOCAL_TSIL.Init(FolderName)
 		--- Table where the keys represent the name of the mod
 		--- @type table<string, ModPersistentData>
 		TSIL.__VERSION_PERSISTENT_DATA.PersistentData = {}
+	end
 
+	if not rawget(TSIL, "__PROXY").__VERSION_PERSISTENT_DATA.GlowingHourglassPersistentDataBackup then
 		--- @type table<string, table<string, any>>
 		TSIL.__VERSION_PERSISTENT_DATA.GlowingHourglassPersistentDataBackup = {}
+	end
+
+		--- @class ScheduledFunction
+		--- @field frames integer
+		--- @field funct function
+		--- @field params table
+
+	if not rawget(TSIL, "__PROXY").__VERSION_PERSISTENT_DATA.ScheduledFunctions then
+		--- @type ScheduledFunction[]
+		TSIL.__VERSION_PERSISTENT_DATA.ScheduledFunctions = {}
+	end
+
+	if not rawget(TSIL, "__PROXY").__VERSION_PERSISTENT_DATA.TemporaryScheduledFunctions then
+		---@type ScheduledFunction[]
+		TSIL.__VERSION_PERSISTENT_DATA.TemporaryScheduledFunctions = {}
 	end
 
 	--LOAD SCRIPTS

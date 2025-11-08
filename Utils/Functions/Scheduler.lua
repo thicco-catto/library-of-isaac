@@ -1,27 +1,36 @@
-local ScheduledFunctions = {}
-local TemporaryScheduledFunctions = {}
-
-
----@param functions table
----@return table
+---@param functions ScheduledFunction[]
 local function UpdateScheludedFunctions(functions)
-	TSIL.Utils.Tables.ForEach(functions, function (_, scheduledFunction)
+	local indexesToRemove = {}
+
+	local length = #functions
+	for i = 1, length, 1 do
+		local scheduledFunction = functions[i]
+
 		scheduledFunction.frames = scheduledFunction.frames - 1
 
 		if scheduledFunction.frames <= 0 then
 			scheduledFunction.funct(table.unpack(scheduledFunction.params))
+			table.insert(indexesToRemove, 1, i)
 		end
-	end)
+	end
 
-	return TSIL.Utils.Tables.Filter(functions, function (_, scheduledFunction)
-		return scheduledFunction.frames > 0
-	end)
+	for _, index in ipairs(indexesToRemove) do
+		table.remove(functions, index)
+	end
+end
+
+---@param functions ScheduledFunction[]
+local function ClearScheludedFunctions(functions)
+	local length = #functions
+	for i = 1, length, 1 do
+		functions[i] = nil
+	end
 end
 
 
 local function OnFrameUpdate()
-	ScheduledFunctions = UpdateScheludedFunctions(ScheduledFunctions)
-	TemporaryScheduledFunctions = UpdateScheludedFunctions(TemporaryScheduledFunctions)
+	UpdateScheludedFunctions(TSIL.__VERSION_PERSISTENT_DATA.ScheduledFunctions)
+	UpdateScheludedFunctions(TSIL.__VERSION_PERSISTENT_DATA.TemporaryScheduledFunctions)
 end
 TSIL.__AddInternalCallback(
 	"SCHEDULER_POST_UPDATE",
@@ -31,7 +40,7 @@ TSIL.__AddInternalCallback(
 
 
 local function OnNewRoom()
-	TemporaryScheduledFunctions = {}
+	ClearScheludedFunctions(TSIL.__VERSION_PERSISTENT_DATA.TemporaryScheduledFunctions)
 end
 TSIL.__AddInternalCallback(
 	"SCHEDULER_POST_NEW_ROOM",
@@ -41,8 +50,8 @@ TSIL.__AddInternalCallback(
 
 
 local function OnGameExit()
-	ScheduledFunctions = {}
-	TemporaryScheduledFunctions = {}
+	ClearScheludedFunctions(TSIL.__VERSION_PERSISTENT_DATA.ScheduledFunctions)
+	ClearScheludedFunctions(TSIL.__VERSION_PERSISTENT_DATA.TemporaryScheduledFunctions)
 end
 TSIL.__AddInternalCallback(
 	"SCHEDULER_PRE_GAME_EXIT",
@@ -57,7 +66,8 @@ TSIL.__AddInternalCallback(
 ---@param ... any
 function TSIL.Utils.Functions.RunInFrames(funct, frames, ...)
 	local args = {...}
-	table.insert(ScheduledFunctions, {funct = funct, frames = frames, params = args})
+	local newindex = #TSIL.__VERSION_PERSISTENT_DATA.ScheduledFunctions + 1
+	TSIL.__VERSION_PERSISTENT_DATA.ScheduledFunctions[newindex] = {funct = funct, frames = frames, params = args}
 end
 
 
@@ -69,5 +79,6 @@ end
 ---@param ... any
 function TSIL.Utils.Functions.RunInFramesTemporary(funct, frames, ...)
 	local args = {...}
-	table.insert(TemporaryScheduledFunctions, {funct = funct, frames = frames, params = args})
+	local newindex = #TSIL.__VERSION_PERSISTENT_DATA.TemporaryScheduledFunctions + 1
+	TSIL.__VERSION_PERSISTENT_DATA.TemporaryScheduledFunctions[newindex] = {funct = funct, frames = frames, params = args}
 end
