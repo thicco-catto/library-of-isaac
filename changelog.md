@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.330
+
+### Fixes
+
+* Fixed typos in enums in `TSIL.Players.GetPlayerMaxHeartContainers(player: EntityPlayer)`.
+
 ## 0.329
 
 ### Additions

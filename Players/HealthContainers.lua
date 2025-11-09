@@ -37,7 +37,7 @@ function TSIL.Players.GetPlayerMaxHeartContainers(player)
 
     -- 1
     -- Magdalene can increase her maximum heart containers with Birthright.
-    if character == PlayerType.MAGDALENE and player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT) then
+    if character == PlayerType.PLAYER_MAGDALENE and player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT) then
         local extraMaxHeartContainersFromBirthright = 6
         return characterMaxHeartContainers + extraMaxHeartContainersFromBirthright
     end
@@ -46,8 +46,8 @@ function TSIL.Players.GetPlayerMaxHeartContainers(player)
     -- Keeper and Tainted Keeper can increase their coin containers with Mother's Kiss and Greed's
     -- Gullet.
     if TSIL.Players.IsKeeper(player) then
-        local numMothersKisses = player:GetTrinketMultiplier(TrinketType.MOTHERS_KISS)
-        local hasGreedsGullet = player:HasCollectible(CollectibleType.GREEDS_GULLET)
+        local numMothersKisses = player:GetTrinketMultiplier(TrinketType.TRINKET_MOTHERS_KISS)
+        local hasGreedsGullet = player:HasCollectible(CollectibleType.COLLECTIBLE_GREEDS_GULLET)
         local coins = player:GetNumCoins()
         local greedsGulletCoinContainers = 0
 
