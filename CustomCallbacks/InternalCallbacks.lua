@@ -25,6 +25,7 @@ function TSIL.__AddInternalCallback(id, callback, funct, priority, optionalParam
 		foundInternalCallback.Funct = funct
 		foundInternalCallback.Priority = priority
 		foundInternalCallback.OptionalParam = optionalParam
+		foundInternalCallback.Version = TSIL.__LOCAL_VERSION
 	else
 		foundInternalCallback = {
 			Id = id,
