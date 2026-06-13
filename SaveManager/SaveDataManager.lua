@@ -57,7 +57,7 @@ local function OnNewRoomEarly()
     TSIL.SaveManager.RestoreDefaultsForAllFeaturesKey("room")
 end
 TSIL.__AddInternalCallback(
-    "SAVE_MANAGER_PRE_NEW_ROOM",
+    "SAVE_MANAGER_NEW_ROOM_EARLY",
     TSIL.Enums.CustomCallback.POST_NEW_ROOM_EARLY,
     OnNewRoomEarly,
     CallbackPriority.IMPORTANT

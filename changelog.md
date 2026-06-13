@@ -5,6 +5,8 @@
 ### Fixes
 
 * Fixed typos in enums in `TSIL.Players.GetPlayerMaxHeartContainers(player: EntityPlayer)`.
+* Fixed internal callbacks not overridinig version.
+* Save Manager doesn't spam errors when using a non rgon version of the library.
 
 ## 0.329
 
