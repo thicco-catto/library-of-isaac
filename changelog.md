@@ -14,7 +14,8 @@
 
 * Removed some grid entity callbacks in favor of Repentogon specific ones.
     * The removed callbacks were `POST_GRID_ENTITY_INIT`, `POST_GRID_ENTITY_UPDATE`, `POST_GRID_ENTITY_RENDER` and `POST_GRID_COLLISION`.
-    * Also all the specific grid entity update and render callbacks. 
+    * Also all the specific grid entity update and render callbacks.
+* `TSIL.Run.CanRunUnlockAchievements()` has been replaced by `Game:AchievementUnlocksDisallowed()`
 
 ---
 

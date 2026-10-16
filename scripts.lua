@@ -313,7 +313,6 @@ local TSIL_SCRIPTS = {
 "Rooms.UpdateRoom",
 "RoomSpecific.SpecificRooms",
 "Run.IsGreedMode",
-"Run.RunUnlockAchievements",
 "SaveManager.AddPersistentPlayerVariable",
 "SaveManager.AddPersistentVariable",
 "SaveManager.GetPErsistentPlayerVariable",

@@ -5522,13 +5522,6 @@ end
 function TSIL.Run.IsGreedMode()
 end
 
----Helper function to check if the current run can unlock achievements.
----
----Done by trying to spawn a greed donation machine and checking if it
----actually spawn.
-function TSIL.Run.CanRunUnlockAchievements()
-end
-
 --- Creates a new per-player persistent variable.
 --- 
 --- Acts exactly the same as a regular variable created with `TSIL.SaveManager.AddPersistentVariable`, but
