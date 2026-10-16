@@ -9,6 +9,7 @@
     * `TSIL.Stage.GridIndexToCoords(gridIndex: integer): Vector`: Converts a level grid index into a set of coordinates.
     * `TSIL.Stage.CoordsToGridIndex(coords: Vector): integer`: Converts a set of coordinates into a level grid index.
     * `TSIL.Stage.AreCoordsValid(coords: Vector): integer`: Checks if the given coordinates are inside the level map.
+* Added `TSIL.Utils.Math.LerpAngle(a: number, b:number, t: number): number` to lineally interpolate between two angles.
 * Added entity specific getter iterator functions for better performance if only iterating over entities.
     * `TSIL.EntitySpecific.GetBombsIter(bombVariant: BombVariant, subType: integer)`
     * `TSIL.EntitySpecific.GetEffectsIter(effectVariant: EffectVariant, subType: integer)`

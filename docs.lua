@@ -6472,6 +6472,15 @@ end
 function TSIL.Utils.Math.Lerp(a, b, t)
 end
 
+--- Helper function to lineally interpolate between two angles.
+---@param a number @Given in radians
+---@param b number @Given in radians
+---@param t number
+---@return number
+---@overload fun(a: Vector, b: Vector, t: number): Vector
+function TSIL.Utils.Math.LerpAngle(a, b, t)
+end
+
 --- Rounds a number to the closest number of decimal places given.
 --- 
 --- Defaults to rounding to the nearest integer.

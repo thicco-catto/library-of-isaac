@@ -365,6 +365,7 @@ local TSIL_SCRIPTS = {
 "Utils.Math.Clamp",
 "Utils.Math.IsInRectangle",
 "Utils.Math.Lerp",
+"Utils.Math.LerpAngle",
 "Utils.Math.Round",
 "Utils.Math.ScalarProduct",
 "Utils.String.EndsWith",
