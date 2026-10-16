@@ -901,7 +901,7 @@ end
 --- Helper function to get all of the slots in the room.
 ---@param slotVariant SlotVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
----@return Entity[]
+---@return EntitySlot[]
 function TSIL.EntitySpecific.GetSlots(slotVariant, subType)
 end
 
@@ -1011,7 +1011,7 @@ end
 ---@param velocity Vector?
 ---@param spawner Entity?
 ---@param seedOrRNG integer | RNG?
----@return Entity
+---@return EntitySlot
 function TSIL.EntitySpecific.SpawnSlot(slotVariant, subType, position, velocity, spawner, seedOrRNG)
 end
 

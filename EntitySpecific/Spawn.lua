@@ -169,11 +169,17 @@ end
 ---@param velocity Vector?
 ---@param spawner Entity?
 ---@param seedOrRNG integer | RNG?
----@return Entity
+---@return EntitySlot
 function TSIL.EntitySpecific.SpawnSlot(slotVariant, subType, position, velocity, spawner, seedOrRNG)
     velocity = velocity or Vector.Zero
 
-    return TSIL.Entities.Spawn(EntityType.ENTITY_SLOT, slotVariant, subType, position, velocity, spawner, seedOrRNG)
+    local entity = TSIL.Entities.Spawn(EntityType.ENTITY_SLOT, slotVariant, subType, position, velocity, spawner, seedOrRNG):ToSlot()
+
+    if entity == nil then
+        error("Failed to spawn a slot")
+    end
+
+    return entity
 end
 
 ---Helper function to spawn a tear.

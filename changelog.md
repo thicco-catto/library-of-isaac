@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.331
+
+### Changes
+
+* `TSIL.EntitySpecific.SpawnSlot()` and `TSIL.EntitySpecific.GetSlots()` now properly return slot entities.
+
 ## 0.330
 
 ### Fixes

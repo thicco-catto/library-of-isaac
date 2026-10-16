@@ -157,9 +157,18 @@ end
 --- Helper function to get all of the slots in the room.
 ---@param slotVariant SlotVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
----@return Entity[]
+---@return EntitySlot[]
 function TSIL.EntitySpecific.GetSlots(slotVariant, subType)
-	local slots = TSIL.Entities.GetEntities(EntityType.ENTITY_SLOT, slotVariant, subType)
+	local entities = TSIL.Entities.GetEntities(EntityType.ENTITY_SLOT, slotVariant, subType)
+	local slots = {}
+
+	for _, v in pairs(entities) do
+		local slot = v:ToSlot()
+		if slot then
+			table.insert(slots, slot)
+		end
+	end
+
 	return slots
 end
 
