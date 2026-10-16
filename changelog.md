@@ -6,6 +6,10 @@
 
 * `TSIL.EntitySpecific.SpawnSlot()` and `TSIL.EntitySpecific.GetSlots()` now properly return slot entities.
 
+### Fixes
+
+* Serializing colors now properly saves the colorize values.
+
 ---
 
 ## 0.330
