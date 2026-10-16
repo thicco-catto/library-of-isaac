@@ -27,6 +27,7 @@ TSIL.IsaacAPIClass = {}
 TSIL.ItemPool = {}
 TSIL.JSON = {}
 TSIL.Log = {}
+TSIL.NPC = {}
 TSIL.Pause = {}
 TSIL.Pickups = {}
 TSIL.PickupSpecific = {}
@@ -4798,6 +4799,12 @@ end
 function TSIL.Log.Log(message)
 end
 
+---Returns the screen position where a status effect icon would be rendered
+---for the given enemy.
+---@param npc EntityNPC
+function TSIL.NPC.GetStatusRenderPosition(npc)
+end
+
 ---Helper function to pause the game similarly to how the game does when showing a giant book
 ---or an achievement.
 ---
@@ -6056,6 +6063,31 @@ end
 ---consider Downpour 2 to have a stage of 3.
 ---@return integer
 function TSIL.Stage.GetEffectiveStage()
+end
+
+---Coverts a level grid index to a set of coordinates that represent
+---the grid index in the level grid map.
+---
+---Note that this doesn't verify if the given grid index is valid.
+---@param gridIndex integer
+---@return Vector
+function TSIL.Stage.GridIndexToCoords(gridIndex)
+end
+
+---Converts a set of level grid map coordinates into its respective
+---grid index.
+---
+---Note that this doesn't verify if the given coordinates are valid.
+---@param coords Vector
+---@return integer
+function TSIL.Stage.CoordsToGridIndex(coords)
+end
+
+---Helper function to check if the given level grid map coordinates
+---are inside the map.
+---@param coords Vector
+---@return boolean
+function TSIL.Stage.AreCoordsValid(coords)
 end
 
 ---Helper function to check if the appropiate ascent flag is set.

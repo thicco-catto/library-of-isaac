@@ -4,6 +4,11 @@
 
 ### Additions
 
+* Added `TSIL.NPC.GetStatusRenderPosition(npc: EntityNPC)` to easily get the position where status effect icons render over enemies.
+* Added `TSIL.Stage.GridIndexToCoords` and related functions.
+    * `TSIL.Stage.GridIndexToCoords(gridIndex: integer): Vector`: Converts a level grid index into a set of coordinates.
+    * `TSIL.Stage.CoordsToGridIndex(coords: Vector): integer`: Converts a set of coordinates into a level grid index.
+    * `TSIL.Stage.AreCoordsValid(coords: Vector): integer`: Checks if the given coordinates are inside the level map.
 * Added entity specific getter iterator functions for better performance if only iterating over entities.
     * `TSIL.EntitySpecific.GetBombsIter(bombVariant: BombVariant, subType: integer)`
     * `TSIL.EntitySpecific.GetEffectsIter(effectVariant: EffectVariant, subType: integer)`
