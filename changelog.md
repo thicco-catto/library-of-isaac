@@ -10,6 +10,12 @@
 
 * Serializing colors now properly saves the colorize values.
 
+### Removed
+
+* Removed some grid entity callbacks in favor of Repentogon specific ones.
+    * The removed callbacks were `POST_GRID_ENTITY_INIT`, `POST_GRID_ENTITY_UPDATE`, `POST_GRID_ENTITY_RENDER` and `POST_GRID_COLLISION`.
+    * Also all the specific grid entity update and render callbacks. 
+
 ---
 
 ## 0.330
