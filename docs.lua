@@ -842,6 +842,8 @@ function TSIL.Entities.Spawn(entityType, variant, subType, position, velocity, s
 end
 
 --- Helper function to get all of the bombs in the room. (Specifically, this refers to the `EntityBomb` class, not bomb pickups.)
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetBombsIter` instead.
 ---@param bombVariant BombVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntityBomb[]
@@ -849,6 +851,8 @@ function TSIL.EntitySpecific.GetBombs(bombVariant, subType)
 end
 
 --- Helper function to get all of the effects in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetEffectsIter` instead.
 ---@param effectVariant EffectVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntityEffect[]
@@ -856,6 +860,8 @@ function TSIL.EntitySpecific.GetEffects(effectVariant, subType)
 end
 
 --- Helper function to get all of the familiars in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetFamiliarsIter` instead.
 ---@param familiarVariant FamiliarVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntityFamiliar[]
@@ -863,12 +869,17 @@ function TSIL.EntitySpecific.GetFamiliars(familiarVariant, subType)
 end
 
 --- Helper function to get all of the knives in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetKnivesIter` instead.
 ---@param knifeVariant KnifeVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return EntityKnife[]
 function TSIL.EntitySpecific.GetKnives(knifeVariant, subType)
 end
 
 --- Helper function to get all of the lasers in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetLasersIter` instead.
 ---@param laserVariant LaserVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntityLaser[]
@@ -876,6 +887,8 @@ function TSIL.EntitySpecific.GetLasers(laserVariant, subType)
 end
 
 --- Helper function to get all of the NPCs in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetNPCsIter` instead.
 ---@param entityType EntityType|integer? @Default: -1 | Default is -1, which matches all types.
 ---@param variant integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
@@ -885,6 +898,8 @@ function TSIL.EntitySpecific.GetNPCs(entityType, variant, subType, ignoreFriendl
 end
 
 --- Helper function to get all of the pickups in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetPickupsIter` instead.
 ---@param pickupVariant PickupVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntityPickup[]
@@ -892,6 +907,8 @@ function TSIL.EntitySpecific.GetPickups(pickupVariant, subType)
 end
 
 --- Helper function to get all of the projectiles in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetProjectilesIter` instead.
 ---@param projectileVariant ProjectileVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntityProjectile[]
@@ -899,6 +916,8 @@ function TSIL.EntitySpecific.GetProjectiles(projectileVariant, subType)
 end
 
 --- Helper function to get all of the slots in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetSlotsIter` instead.
 ---@param slotVariant SlotVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntitySlot[]
@@ -906,10 +925,114 @@ function TSIL.EntitySpecific.GetSlots(slotVariant, subType)
 end
 
 --- Helper function to get all of the tears in the room.
+--- 
+--- If you just need to loop through these entities it is recommended that you use `TSIL.EntitySpecific.GetTearsIter` instead.
 ---@param tearVariant TearVariant|integer? @Default: -1 | Default is -1, which matches all variants.
 ---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
 ---@return EntityTear[]
 function TSIL.EntitySpecific.GetTears(tearVariant, subType)
+end
+
+--- Helper function to get all of the bombs in the room in an iterator. (Specifically, this refers to the `EntityBomb` class, not bomb pickups.)
+--- ```lua
+---    for bomb in TSIL.EntitySpecific.GetBombsIter() do body end
+--- ```
+---@param bombVariant BombVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityBomb?
+function TSIL.EntitySpecific.GetBombsIter(bombVariant, subType)
+end
+
+--- Helper function to get all of the effects in the room in an iterator.
+--- ```lua
+---    for effect in TSIL.EntitySpecific.GetEffectsIter() do body end
+--- ```
+---@param effectVariant EffectVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityEffect?
+function TSIL.EntitySpecific.GetEffectsIter(effectVariant, subType)
+end
+
+--- Helper function to get all of the familiars in the room in an iterator.
+--- ```lua
+---    for familiar in TSIL.EntitySpecific.GetFamiliarsIter() do body end
+--- ```
+---@param familiarVariant FamiliarVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityFamiliar?
+function TSIL.EntitySpecific.GetFamiliarsIter(familiarVariant, subType)
+end
+
+--- Helper function to get all of the knives in the room in an iterator.
+--- ```lua
+---    for knife in TSIL.EntitySpecific.GetKnivesIter() do body end
+--- ```
+---@param knifeVariant KnifeVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityKnife?
+function TSIL.EntitySpecific.GetKnivesIter(knifeVariant, subType)
+end
+
+--- Helper function to get all of the lasers in the room in an iterator.
+--- ```lua
+---    for laser in TSIL.EntitySpecific.GetLasersIter() do body end
+--- ```
+---@param laserVariant LaserVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityLaser?
+function TSIL.EntitySpecific.GetLasersIter(laserVariant, subType)
+end
+
+--- Helper function to get all of the NPCs in the room in an iterator.
+--- ```lua
+---    for npc in TSIL.EntitySpecific.GetNPCs() do body end
+--- ```
+---@param entityType EntityType|integer? @Default: -1 | Default is -1, which matches all types.
+---@param variant integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@param ignoreFriendly boolean? @Default: false | If set to true, it will exclude friendly NPCs from being returned. Default is false. Will only be taken into account if the `entityType` is specified.
+---@return fun(): EntityNPC?
+function TSIL.EntitySpecific.GetNPCs(entityType, variant, subType, ignoreFriendly)
+end
+
+--- Helper function to get all of the pickups in the room in an iterator.
+--- ```lua
+---    for pickup in TSIL.EntitySpecific.GetPickupsIter() do body end
+--- ```
+---@param pickupVariant PickupVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityPickup?
+function TSIL.EntitySpecific.GetPickupsIter(pickupVariant, subType)
+end
+
+--- Helper function to get all of the projectiles in the room in an iterator.
+--- ```lua
+---    for projectile in TSIL.EntitySpecific.GetProjectilesIter() do body end
+--- ```
+---@param projectileVariant ProjectileVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityProjectile?
+function TSIL.EntitySpecific.GetProjectilesIter(projectileVariant, subType)
+end
+
+--- Helper function to get all of the slots in the room in an iterator.
+--- ```lua
+---    for slots in TSIL.EntitySpecific.GetSlotsIter() do body end
+--- ```
+---@param slotVariant SlotVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntitySlot?
+function TSIL.EntitySpecific.GetSlotsIter(slotVariant, subType)
+end
+
+--- Helper function to get all of the tears in the room in an iterator.
+--- ```lua
+---    for tear in TSIL.EntitySpecific.GetTearsIter() do body end
+--- ```
+---@param tearVariant TearVariant|integer? @Default: -1 | Default is -1, which matches all variants.
+---@param subType integer? @Default: -1 | Default is -1, which matches all sub-types.
+---@return fun(): EntityTear?
+function TSIL.EntitySpecific.GetTearsIter(tearVariant, subType)
 end
 
 ---Helper function to spawn an NPC.

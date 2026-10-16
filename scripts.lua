@@ -240,6 +240,7 @@ local TSIL_SCRIPTS = {
 "Entities.IsCollidingWithGrid",
 "Entities.Spawn",
 "EntitySpecific.GetEntity",
+"EntitySpecific.GetEntityIter",
 "EntitySpecific.Spawn",
 "Familiars.CheckFamiliar",
 "Familiars.GetPlayerFamiliars",

@@ -2,6 +2,27 @@
 
 ## 0.331
 
+### Additions
+
+* Added entity specific getter iterator functions for better performance if only iterating over entities.
+    * `TSIL.EntitySpecific.GetBombsIter(bombVariant: BombVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetEffectsIter(effectVariant: EffectVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetFamiliarsIter(familiarVariant: FamiliarVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetKnivesIter(knifeVariant: KnifeVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetLasersIter(laserVariant: LaserVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetNPCs(entityType: EntityType, variant: integer, subType: integer, ignoreFriendly: boolean)`
+    * `TSIL.EntitySpecific.GetPickupsIter(pickupVariant: PickupVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetProjectilesIter(projectileVariant: ProjectileVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetSlotsIter(slotVariant: SlotVariant, subType: integer)`
+    * `TSIL.EntitySpecific.GetTearsIter(tearVariant: TearVariant, subType: integer)`
+    * Sample of usage:
+        ```lua
+        -- Destroys every projectile in the room
+        for projectile in TSIL.EntitySpecific.GetProjectilesIter() do
+            projectile:Kill()
+        end
+        ```
+
 ### Changes
 
 * `TSIL.EntitySpecific.SpawnSlot()` and `TSIL.EntitySpecific.GetSlots()` now properly return slot entities.
